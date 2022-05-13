@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 
 const postSchema = mongoose.Schema({
-    UserId : {
-        type : mongoose.Schema.Types.ObjectId , ref : 'user',
+    userId : {
+        type : String ,
         required : true
     },
     contents : {
@@ -12,12 +12,12 @@ const postSchema = mongoose.Schema({
     },
     upvotes : [
         {
-            type : mongoose.Schema.Types.ObjectId , ref : 'user'
+            type : String
         }
     ],
     downvotes : [
         {
-            type : mongoose.Schema.Types.ObjectId , ref : 'user'
+            type : String 
         }
     ],
     comments : [

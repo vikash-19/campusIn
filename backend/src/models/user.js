@@ -3,25 +3,32 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema({
     name : {
         type : String  ,
+        trim : true ,
         required : true
     },
     course : {
         type : String , 
+        trim : true ,
         required: true
     },
     year : {
         type : String  ,
+        trim : true ,
         required : true
     },
     branch: {
-        type : String 
+        type : String,
+        trim : true  
     },
-    email : {
+    userId : {
         type : String  ,
-        required : true
+        trim : true ,
+        required : true,
+        unique : true 
     },
     contactNumber : {
         type : String ,
+        trim : true ,
         required : true, 
         minLength : 10,
         maxLength : 10
@@ -33,22 +40,20 @@ const userSchema = mongoose.Schema({
     profilePicture : {
         type : String
     },
-    posts : [
+    postIds : [
         {
-            postId : {
-                type : mongoose.Schema.Types.ObjectId , ref : 'post'
-            },
-            upvotes : Number,
-            downvotes : Number
+            type : mongoose.Schema.Types.ObjectId , ref : 'post'
         }
     ],
-    comments : [
+    commentIds : [
         {
-            commentId : {
-                type : mongoose.Schema.Types.ObjectId , ref : 'comment'
-            },
-            upvotes : Number,
-            downvotes : Number
+            type : mongoose.Schema.Types.ObjectId , ref : 'comment'
+        }
+    ],
+
+    productIds : [
+        {
+            type : mongoose.Schema.Types.ObjectId , ref : 'product'
         }
     ]
 } , {timestamps : true});

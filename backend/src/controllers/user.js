@@ -4,13 +4,15 @@ const User = require('../models/user');
 
 
 exports.Signup = function(req , res) {
-    //console.log(req.body);
+
+
+    console.log(req.body);
     const newUser = new User({
         name : req.body.name,
         course : req.body.course,
         year : req.body.year,
         branch : req.body.branch,
-        email : req.body.email,
+        userId : req.body.email.split("@")[0],
         contactNumber : req.body.contact
     });
     newUser.save(function(err , _user) {
@@ -21,3 +23,15 @@ exports.Signup = function(req , res) {
         }
     })
 }
+
+exports.Signin = function(req , res){
+    let userId = req.query.email.split("@")[0] ;
+    User.find({userId } , function(error , result){
+        if(error){
+            res.send(error.msg) ;
+        }
+        else{
+            res.send(result)
+        }
+    })
+};
