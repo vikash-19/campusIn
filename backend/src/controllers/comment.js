@@ -24,3 +24,18 @@ exports.postComment =  function(req , res){
     })
 }
 
+exports.getComment =  function(req , res){
+    let tempPostId =  req.query.postId ;
+    Comment.find({postId : tempPostId } , function(err , data){
+        if(err){
+            res.send(err) ;
+        }
+        else{
+            res.send(data) ;
+        }
+    })
+}
+
+
+
+
