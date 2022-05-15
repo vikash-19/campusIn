@@ -2,35 +2,35 @@ const mongoose = require('mongoose');
 
 const resourceSchema = mongoose.Schema({
     userId : {
-        type : mongoose.Schema.Types.ObjectId , ref : "user",
+        type : String,
         required : true
     },
     year : {
-        type : Number,
+        type : String,
         required : true
     },
     semester : {
-        type : Number,
-        required : true
+        type : String ,
+        requiured : true
     },
     branch : {
-        type : String,
+        type : String ,
         required : true
     },
     subject : {
-        type : String,
-        required : true
-    },
-    resourceYear : {
-        type : Number,
+        type : String ,
         required : true
     },
     materialType :{
         type : String,
-        enum : ['Quantum' , 'Notes' , 'TestPaper'],
-        default : "Notes"
+        enum : ['Quantum' , 'Notes' , 'TestPaper' , 'Other'],
+        default : "Other"
     },
-    dataLink : {
+    resourceLink : {
+        type : String,
+        required : true
+    },
+    description : {
         type : String,
         required : true
     }

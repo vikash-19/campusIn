@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 // Routes
-// const ResourceRoute = require('./routes/resources');
+const ResourceRoute = require('./routes/resources');
 const UserRoute = require('./routes/user');
 const postRoute  =  require('./routes/post') ;
 const productRoute  =  require('./routes/product') ;
@@ -17,7 +17,7 @@ mongoose.connect(url , {useNewUrlParser: true }).then(function() {
     console.log("databse connected");
 });
 
-// app.use('/api' , ResourceRoute);
+app.use('/api' , ResourceRoute);
 app.use('/api' , UserRoute);
 app.use('/api' , postRoute ) ;
 app.use('/api' , productRoute ) ;
