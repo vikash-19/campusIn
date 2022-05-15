@@ -8,6 +8,7 @@ const app = express();
 const UserRoute = require('./routes/user');
 const postRoute  =  require('./routes/post') ;
 const productRoute  =  require('./routes/product') ;
+const commentRoute = require('./routes/comment');
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -20,7 +21,7 @@ mongoose.connect(url , {useNewUrlParser: true }).then(function() {
 app.use('/api' , UserRoute);
 app.use('/api' , postRoute ) ;
 app.use('/api' , productRoute ) ;
-
+app.use('/api' , commentRoute) ;
 
 app.get('/' , (req , res) => {
     res.send('hello');
@@ -29,3 +30,4 @@ app.get('/' , (req , res) => {
 app.listen(3000 , function() {
     console.log('Server is running on port 3000');
 })
+
