@@ -18,3 +18,15 @@ exports.addResource = (req , res) => {
         }
     })
 }
+
+exports.getResources = (req , res) => {
+    let datas=req.query;
+    console.log(datas)
+    Resource.find(datas,(error,result)=>{
+        if(error){
+            res.status(401).send("something went wrong!")
+        }
+        else
+         res.status(200).set({"Content-Type":"application/json"}).send(result)
+    })
+}
