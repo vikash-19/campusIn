@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const postSchema = mongoose.Schema({
     userId : {
         type : String ,
@@ -10,6 +9,7 @@ const postSchema = mongoose.Schema({
         type : String,
         required : true
     },
+    files : String ,  
     upvotes : [
         {
             type : String
